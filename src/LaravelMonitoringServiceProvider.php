@@ -5,7 +5,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 use Prometheus\CollectorRegistry;
 use Prometheus\Storage\redis;
- 
+
 class LaravelMonitoringServiceProvider extends ServiceProvider
 {
     /**
@@ -16,16 +16,15 @@ class LaravelMonitoringServiceProvider extends ServiceProvider
     public function register(): void
  
     {
-   
-    $this->app->singleton(CollectorRegistry::class, function () {
-   
-    // Initialize the CollectorRegistry with InMemory storage
-   
-    $adapter = new Redis(); // Create an instance of your InMemory storage adapter
-   
-    return new CollectorRegistry($adapter); // Pass the adapter to CollectorRegistry
-   
-    });
+        $this->app->singleton( CollectorRegistry::class, function () {
+
+            Redis::setDefaultOptions(
+                Arr::only( config( 'database.redis.default' ), [ 'host', 'password', 'username' ] )
+            );
+
+            return CollectorRegistry::getDefault();
+
+        } );
    
     }
  
