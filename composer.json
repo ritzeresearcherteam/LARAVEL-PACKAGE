@@ -4,8 +4,7 @@
     "type": "library",
     "require": {
         "promphp/prometheus_client_php": "^2.11",
-        "keepsuit/laravel-opentelemetry": "^0.4.0",
-        "open-telemetry/sdk": "dev-main",
+        "keepsuit/laravel-opentelemetry": "dev-main",
         "symfony/http-client": "^7.1",
         "nyholm/psr7": "^1.8"
     },
@@ -17,7 +16,7 @@
     "repositories": [
         {
           "type": "vcs",
-        "url": "https://github.com/kiariep/LARAVEL-SDK.git"
+        "url": "https://github.com/ritzeresearcherteam/LARAVEL-OPENTEL.git"
         }
     ],
     "extra": {
